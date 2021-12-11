@@ -8,22 +8,18 @@ body {
 
 }
 
-.playing {
+.musicPlayer {
     background-image: url("../img/music-player-bg.jpg");
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
     height: 80vh;
-    width: 100%;
-
-}
-
-.musicPlayer {
+    width: 70%;
     display: grid;
-    width: 60em;
     grid-template-columns: repeat(2, 1fr);
-    background-image: black;
-    border-radius: 2em;
+    border: 2px solid;
+    border-radius: 7em;
+    /* box-shadow: -.2em .2em gray; */
 }
 
 img {
@@ -34,7 +30,6 @@ img {
 
 .playing {
     display: grid;
-    background-color: darkmagenta;
 }
 
 .imgPlaying {
@@ -46,6 +41,8 @@ img {
     align-items: flex-start;
     align-content: center;
     justify-content: center;
+    border: 2px solid;
+    border-radius: 3em;
 }
 
 .controls {
@@ -57,10 +54,5 @@ img {
     gap: 2em;
 }
 
-
-
-.playlist {
-    background-color: darkmagenta;
-}
 
 
