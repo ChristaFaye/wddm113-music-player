@@ -1,7 +1,13 @@
+body {
+    background-image: url("../img/music-player-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .musicPlayer {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    background-color: red;;
+    background-image: black;
 }
 
 .playing {
