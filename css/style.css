@@ -1,9 +1,11 @@
 body {
-    margin: 0 ;
-    height: 80vh;
+    margin: 3em;
+    height: 90vh ;
+    display: flex ;
     align-items: center ;
     justify-content: center ;
-    font-family: 'Quicksand', sans-serif ;
+    background-color: black ;
+
 }
 
 .playing {
@@ -11,8 +13,9 @@ body {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
+    height: 80vh;
     width: 100%;
+
 }
 
 .musicPlayer {
@@ -20,22 +23,7 @@ body {
     width: 60em;
     grid-template-columns: repeat(2, 1fr);
     background-image: black;
-}
-
-.controls {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    width: 10em;
-    text-align: center;
-}
-
-.playing {
-    display: grid;
-    background-color: darkmagenta;
-}
-
-.playlist {
-    background-color: darkmagenta;
+    border-radius: 2em;
 }
 
 img {
@@ -43,3 +31,36 @@ img {
     height: 5em;
     justify-content: center;
 }
+
+.playing {
+    display: grid;
+    background-color: darkmagenta;
+}
+
+.imgPlaying {
+    width: 20em;
+    height: 20em;
+    display: block;
+    margin: auto;
+    position: relative;
+    align-items: flex-start;
+    align-content: center;
+    justify-content: center;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    align-content: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+
+
+.playlist {
+    background-color: darkmagenta;
+}
+
+
