@@ -1,7 +1,19 @@
-button {
-    background-color: transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden; 
+.musicPlayer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: red;;
+}
+
+.playing {
+    background-color: violet;
+}
+
+.playlist {
+    background-color: darkviolet;
+}
+
+img {
+    width: 5em;
+    height: 5em;
+    justify-content: center;
 }
