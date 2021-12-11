@@ -1,21 +1,41 @@
 body {
+    margin: 0 ;
+    height: 80vh;
+    align-items: center ;
+    justify-content: center ;
+    font-family: 'Quicksand', sans-serif ;
+}
+
+.playing {
     background-image: url("../img/music-player-bg.jpg");
-    background-position: center;
+    background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
+    width: 100%;
 }
+
 .musicPlayer {
     display: grid;
+    width: 60em;
     grid-template-columns: repeat(2, 1fr);
     background-image: black;
 }
 
+.controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 10em;
+    text-align: center;
+}
+
 .playing {
-    background-color: violet;
+    display: grid;
+    background-color: darkmagenta;
 }
 
 .playlist {
-    background-color: darkviolet;
+    background-color: darkmagenta;
 }
 
 img {
