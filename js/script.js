@@ -9,6 +9,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
+            duration: "3:00";
         },
         { //song2
             title: "title1", 
