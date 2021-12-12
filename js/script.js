@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', function() {
 
-let songList = [
+const songList = [
         {  //song1
             title: "title1", 
             artist: "artist1",
@@ -121,15 +121,22 @@ songList.forEach((item)=>{
         
     `;
     list.appendChild(li);
+    
   })
+  return num;
 });
 
 function selectedSong(clicked_id) { 
     var num = clicked_id.charAt(4) + clicked_id.charAt(5);
-    document.getElementById("songTitle").innerHTML = num;
-  return num;
+    document.getElementById("songTitle").innerHTML = num-1;
+    return num;
 }
 
-  console.log(num);
+console.log(num);
+
+
+
+
+
 
 
