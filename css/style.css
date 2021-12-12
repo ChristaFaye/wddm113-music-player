@@ -46,7 +46,7 @@ img {
     filter: blur(1em);
 }
 
-.imgPlaying {
+#imgPlaying {
     width: 20em;
     height: 20em;
     display: block;
@@ -140,3 +140,17 @@ p {
     left: 12em;
     color: gray;
 }
+
+#songTitle {
+    text-align: center;
+    
+}
+
+#artist {
+    text-align: center;
+}
+
+#album {
+    text-align: center;
+}
+
