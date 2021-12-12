@@ -99,10 +99,13 @@ let list = document.getElementById("list");
 songList.forEach((item)=>{
     let li = document.createElement("li");
     li.innerHTML = `
-    <img src="${item.src}"/>
-    <h2>${item.title}</h2>
-    <h3>${item.album} by ${item.artist}</h3>
-    <p>${item.rating}`;
+    <img src="${item.src} id="imgList"/>
+    <span>
+        <h2>${item.title}</h2>
+        <h3>${item.album} by ${item.artist}</h3>
+        <p>${item.rating}
+    </span>
+    `;
     //li.setAttribute(src, item.src);
     
     
