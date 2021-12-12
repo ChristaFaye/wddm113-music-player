@@ -28,14 +28,13 @@
     
         <div class="playlist" id="playlist">
             <h1>Top 10 Chart</h2>
-            <select name="filter" id="filter">
-            <option value="">--select--</option>
-            <option value="alphabetical">Alphabetical</option>
-            <option value="Duration">Watermelon</option>
-            <option value="Artist">Kiwi</option>
-            </select>
-
-                
+                <select name="filter" id="filter" onclick="filter()">
+                    <option value="">--select--</option>
+                    <option value="alphabetical">Alphabetical</option>
+                    <option value="duration">Duration</option>
+                    <option value="artist">Artist</option>
+                  </select>
+                               
             <ul id="list">
             </ul>
             
