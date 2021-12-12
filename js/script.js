@@ -1,8 +1,3 @@
-
-
-
-window.addEventListener('DOMContentLoaded', function() {
-
 const songList = [
         {  //song1
             title: "Love Myself", 
@@ -106,6 +101,7 @@ const songList = [
         }    
 ];
 
+window.addEventListener('DOMContentLoaded', function() {
 let list = document.getElementById("list");
 var i =0;
 songList.forEach((item)=>{
@@ -119,128 +115,64 @@ songList.forEach((item)=>{
             <h2>${item.title}</h2>
             <h3>${item.album} by ${item.artist}</h3>
         </span>
-        <p>${item.duration}</p>
         
     `;
     list.appendChild(li);
   })
 
+  });
 
-});
 
 function clicked(clicked_id) { 
-const songList = [
-        {  //song1
-            title: "title1", 
-            artist: "artist1",
-            album: "album1",
-            src: "mp3", 
-            songCover: "../img/song-cover.jpg",
-            desc: "lorem ipsum",
-            rating: "5.0",
-            duration: "3:00"
-        },
-        { //song2
-            title: "title2", 
-            artist: "artist1",
-            album: "album1",
-            src: "mp3", 
-            songCover: "img1",
-            desc: "lorem ipsum",
-            rating: "5.0",
-            duration: "3:00"
-        },
-        { //song3
-            title: "title1", 
-            artist: "artist1",
-            album: "album1",
-            src: "mp3", 
-            songCover: "img1",
-            desc: "lorem ipsum",
-            rating: "5.0",
-            duration: "3:00"
-        },
-        { //song4
-            title: "title1", 
-            artist: "artist1",
-            album: "album1",
-            src: "mp3", 
-            songCover: "img1",
-            desc: "lorem ipsum",
-            rating: "5.0",
-            duration: "3:00"
-        },
-        { //song5
-            title: "title1", 
-            artist: "artist1",
-            album: "album1",
-            src: "mp3", 
-            songCover: "img1",
-            desc: "lorem ipsum",
-            rating: "5.0",
-            duration: "3:00"
-        },
-        { //song6
-            title: "title1", 
-            artist: "artist1",
-            album: "album1",
-            src: "mp3", 
-            songCover: "img1",
-            desc: "lorem ipsum",
-            rating: "5.0",
-            duration: "3:00"
-        },
-        { //song7
-            title: "title1", 
-            artist: "artist1",
-            album: "album1",
-            src: "mp3", 
-            songCover: "img1",
-            desc: "lorem ipsum",
-            rating: "5.0",
-            duration: "3:00"
-        },
-        { //song8
-            title: "title1", 
-            artist: "artist1",
-            album: "album1",
-            src: "mp3", 
-            songCover: "img1",
-            desc: "lorem ipsum",
-            rating: "5.0",
-            duration: "3:00"
-        },
-        { //song9
-            title: "title1", 
-            artist: "artist1",
-            album: "album1",
-            src: "mp3", 
-            songCover: "img1",
-            desc: "lorem ipsum",
-            rating: "5.0",
-            duration: "3:00"
-        },
-        { //song10
-            title: "title1", 
-            artist: "artist1",
-            album: "album1",
-            src: "mp3", 
-            songCover: "img1",
-            desc: "lorem ipsum",
-            rating: "5.0",
-            duration: "3:00"
-        }    
-];
+
     var num = clicked_id.charAt(4) + clicked_id.charAt(5);
     var x = num - 1;
-    console.log(songList[x]);
     var song = songList[x];
+    var playSrc = `../img/playBtn.png`;
     document.getElementById("songTitle").innerHTML = song.title;
-    document.getElementById("imgPlaying").src = song.src;
-    document.getElementById("artist").innerHTML = song.artist;
-    document.getElementById("album").innerHTML = song.album;
-    
+    document.getElementById("imgPlaying").src = song.songCover;
+    document.getElementById("artistPlaying").innerHTML = song.artist;
+    document.getElementById("albumPlaying").innerHTML = song.album;
+    document.getElementById("audio").src = song.src;
+    document.getElementById("playBtn").setAttribute(`onclick`, `play()`);
+    document.getElementById("playBtn").setAttribute(`src`, playSrc);
 }
+
+
+function play() {
+    var audio = document.getElementById("audio");
+    var btn = document.getElementById("playBtn");
+    var pause =  document.getElementById("playBtn");
+    btn.src = `../img/pauseBtn.png`;
+    pause.setAttribute(`onclick`, `pause()`);
+    audio.play();
+
+}
+
+function pause() {
+    var audio = document.getElementById("audio");
+    var btn = document.getElementById("playBtn");
+    var play = document.getElementById("playBtn");
+    btn.src = `../img/playBtn.png`;
+    play.setAttribute(`onclick`, `play()`);
+    audio.pause();
+
+}
+
+function sortArray() {
+var sortedList = songList.sort(function(a, b){
+    if(a.title < b.title) { return -1; }
+    if(a.title > b.title) { return 1; }
+    let songList = [];
+    return songList.push(sortedList);
+})
+}
+
+
+
+
+
+
 
 
 
