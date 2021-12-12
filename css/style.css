@@ -71,6 +71,10 @@ ul {
     text-align: left;
 }
 
+li {
+    border-bottom: .5px solid beige;
+}
+
 .playlist ul {
     max-height: 40em;
     width: 20em;
