@@ -109,9 +109,10 @@ var i =0;
 songList.forEach((item)=>{
     i++;
     let li = document.createElement("li");
-    li.id = `song${i}`;
+    li.setAttribute(`id`, `song${i}`);
+    li.setAttribute(`onclick`, `selectedSong(this.id)`);
     li.innerHTML = `
-        <img src=${item.songCover} id="imgList"/>
+        <img src=${item.songCover} id="imglist" "/>
         <span>
             <h2>${item.title}</h2>
             <h3>${item.album} by ${item.artist}</h3>
@@ -123,6 +124,12 @@ songList.forEach((item)=>{
   })
 });
 
-let play = document.getElementBy
+function selectedSong(clicked_id) { 
+    var num = clicked_id.charAt(4) + clicked_id.charAt(5);
+    document.getElementById("songTitle").innerHTML = num;
+  return num;
+}
+
+  console.log(num);
 
 
