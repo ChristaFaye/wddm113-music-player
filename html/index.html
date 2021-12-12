@@ -12,7 +12,6 @@
 
     <div class="musicPlayer" id="musicPlayer">
          <div class="playing">
-            <button onclick="sortArray()">Sort</button>
             <div id="blurbg"></div>
             <img id="imgPlaying" src="../img/song-cover.jpg" alt=""/>
             <h4 id="songTitle">Title</h4>
@@ -29,12 +28,20 @@
     
         <div class="playlist" id="playlist">
             <h1>Top 10 Chart</h2>
+            <select name="filter" id="filter">
+            <option value="">--select--</option>
+            <option value="alphabetical">Alphabetical</option>
+            <option value="Duration">Watermelon</option>
+            <option value="Artist">Kiwi</option>
+            </select>
+
+                
             <ul id="list">
             </ul>
             
         </div>
 
-
+        
 
     </script>
     </div>
