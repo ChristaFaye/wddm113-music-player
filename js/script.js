@@ -80,7 +80,7 @@ const songList = [
             duration: "3:00"
         },
         { //song9
-            title: "Ugh", 
+            title: "UGH", 
             artist: "artist1",
             album: "album1",
             src: "../songs/BTS_UGH.mp3", 
@@ -140,7 +140,7 @@ function clicked(clicked_id) {
     var num = clicked_id.charAt(4) + clicked_id.charAt(5);
     var x = num - 1;
     var song = songList[x];
-    
+    var playSrc = `../img/playBtn.png`;
     document.getElementById("songTitle").innerHTML = song.title;
     document.getElementById("imgPlaying").src = song.songCover;
     document.getElementById("artistPlaying").innerHTML = song.artist;
@@ -171,23 +171,33 @@ function pause() {
 
 }
 
+function filter() {
+
 const element = document.getElementById("filter");
 
-element.addEventListener("change", (e) => {
-    const value = e.target.value;
-    const text = element.options[element.selectedIndex].text;
-   
-    if (value === `Alphabetical`) {
-        var ul = document.getElementById("list");
-  
-        Array.from(ul.getElementsByTagName("LI"))
-          .sort((a, b) => a.textContent.localeCompare(b.textContent))
-          .forEach(li => ul.appendChild(li));
-    } else {
-      console.log("Passed")
-    }
-  });
+const checkValue = element.options[element.selectedIndex].value;
+const checkText = element.options[element.selectedIndex].text;
 
+element.addEventListener("change", (e) => {
+  const value = e.target.value;
+
+  if (value) {
+    console.log(value);
+  } else {
+    console.log(`Passed`);
+  }
+});
+
+}
+
+
+function sortList() {
+    var ul = document.getElementById("list");
+  
+    Array.from(ul.getElementsByTagName("LI"))
+      .sort((a, b) => a.textContent.localeCompare(b.textContent))
+      .forEach(li => ul.appendChild(li));
+  }
 
 
 
