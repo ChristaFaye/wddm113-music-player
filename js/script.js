@@ -107,15 +107,10 @@ songList.forEach((item)=>{
             <h3>${item.album} by ${item.artist}</h3>
         </span>
     `;
-    //li.setAttribute(src, item.src);
-    
-    
     list.appendChild(li);
   })
-
-// for(let i = 0; i < songList.length; i++){
-//     console.log(songList[i].title);
-//     document.getElementById("song").innerHTML = "TEST2";
-// } 
-
 });
+
+let play = document.getElementBy
+
+
