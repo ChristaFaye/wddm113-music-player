@@ -132,6 +132,7 @@ window.addEventListener('DOMContentLoaded', function() {
     document.getElementById("imgPlaying").setAttribute(`src`, firstSong.songCover);;
     document.getElementById("playBtn").setAttribute(`onclick`, `play()`);
     document.getElementById("playBtn").setAttribute(`src`, playSrc);
+    
   });
 
   
@@ -148,6 +149,10 @@ function clicked(clicked_id) {
     document.getElementById("audio").src = song.src;
     document.getElementById("playBtn").setAttribute(`onclick`, `play()`);
     document.getElementById("playBtn").setAttribute(`src`, playSrc);
+
+    
+
+    
 }
 
 
@@ -155,10 +160,30 @@ function play() {
     var audio = document.getElementById("audio");
     var btn = document.getElementById("playBtn");
     var pause =  document.getElementById("playBtn");
+   
     btn.src = `../img/pauseBtn.png`;
     pause.setAttribute(`onclick`, `pause()`);
     audio.play();
+    
+    audio.ontimeupdate = function() {
+        var currentTime = audio.currentTime;
+        var minutes = Math.floor(currentTime / 60);
+        var seconds = Math.floor(currentTime - minutes * 60);
+        if (minutes < 10) {minutes = "0"+minutes;}
+        if (seconds < 10) {seconds = "0"+seconds;}
+        var songCurrentTime = minutes + ':' + seconds;
+        
+        document.getElementById("demo").innerHTML = songCurrentTime;
+    };
 
+    var duration = audio.duration;
+    var minutes = Math.floor(duration / 60);
+    var seconds = Math.floor(duration - minutes * 60);
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    var songDuration = minutes + ':' + seconds;
+    console.log(songDuration);
+    
 }
 
 function pause() {
@@ -181,8 +206,8 @@ const checkText = element.options[element.selectedIndex].text;
 element.addEventListener("change", (e) => {
   const value = e.target.value;
 
-  if (value) {
-    console.log(value);
+  if (value === `alphabetical`) {
+    sortAlphabetical();
   } else {
     console.log(`Passed`);
   }
@@ -191,13 +216,16 @@ element.addEventListener("change", (e) => {
 }
 
 
-function sortList() {
+function sortAlphabetical() {
     var ul = document.getElementById("list");
   
     Array.from(ul.getElementsByTagName("LI"))
       .sort((a, b) => a.textContent.localeCompare(b.textContent))
       .forEach(li => ul.appendChild(li));
-  }
+}
+
+
+
 
 
 
