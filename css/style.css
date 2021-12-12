@@ -31,9 +31,9 @@ img {
     justify-content: center;
 }
 
-.playBtn, .backBtn, .forwardBtn {
-    width: 4em;
-    height: 4em;
+#playBtn, #backBtn, #forwardBtn {
+    width: 5em;
+    height: 5em;
     justify-content: center;
     border: none;
 }
@@ -137,20 +137,31 @@ h3 {
 
 p {
     position: relative;
-    left: 12em;
+    text-align: right;
+    left: 15em;
     color: gray;
 }
-
+h4 {
+    font-family: Calibri;
+    color: white;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+}
 #songTitle {
     text-align: center;
-    
+    margin: 0;
+    font-size: 2em;
 }
 
-#artist {
+#artistPlaying {
     text-align: center;
+    margin: 0;
+    font-size: 1.5em;
 }
 
-#album {
+#albumPlaying {
     text-align: center;
+    font-size: 1em;
 }
 
