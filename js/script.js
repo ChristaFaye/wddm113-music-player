@@ -102,33 +102,45 @@ const songList = [
 ];
 
 window.addEventListener('DOMContentLoaded', function() {
-let list = document.getElementById("list");
-var i =0;
-songList.forEach((item)=>{
-    i++;
-    let li = document.createElement("li");
-    li.setAttribute(`id`, `song${i}`);
-    li.setAttribute(`onclick`, `clicked(this.id)`);
-    li.innerHTML = `
-        <img src=${item.songCover} id="imglist" "/>
-        <span>
-            <h2>${item.title}</h2>
-            <h3>${item.album} by ${item.artist}</h3>
-        </span>
-        
-    `;
-    list.appendChild(li);
-  })
 
+    let list = document.getElementById("list");
+    var i =0;
+    songList.forEach((item)=>{
+        i++;
+        let li = document.createElement("li");
+        li.setAttribute(`id`, `song${i}`);
+        li.setAttribute(`onclick`, `clicked(this.id)`);
+        li.innerHTML = `
+            <img src=${item.songCover} id="imglist" "/>
+            <span>
+                <h2>${item.title}</h2>
+                <h3>${item.album} by ${item.artist}</h3>
+            </span>
+            
+        `;
+        list.appendChild(li);
+    })
+  
+   // sortList("list");
+
+    let firstSong = songList[0];
+    var playSrc = `../img/playBtn.png`;
+    document.getElementById("songTitle").innerHTML = firstSong.title;
+    document.getElementById("artistPlaying").innerHTML = firstSong.artist;
+    document.getElementById("albumPlaying").innerHTML = firstSong.album;
+    document.getElementById("audio").src = firstSong.src;
+    document.getElementById("imgPlaying").setAttribute(`src`, firstSong.songCover);;
+    document.getElementById("playBtn").setAttribute(`onclick`, `play()`);
+    document.getElementById("playBtn").setAttribute(`src`, playSrc);
   });
 
-
+  
 function clicked(clicked_id) { 
 
     var num = clicked_id.charAt(4) + clicked_id.charAt(5);
     var x = num - 1;
     var song = songList[x];
-    var playSrc = `../img/playBtn.png`;
+    
     document.getElementById("songTitle").innerHTML = song.title;
     document.getElementById("imgPlaying").src = song.songCover;
     document.getElementById("artistPlaying").innerHTML = song.artist;
@@ -158,6 +170,23 @@ function pause() {
     audio.pause();
 
 }
+
+const element = document.getElementById("filter");
+
+element.addEventListener("change", (e) => {
+    const value = e.target.value;
+    const text = element.options[element.selectedIndex].text;
+   
+    if (value === `Alphabetical`) {
+        var ul = document.getElementById("list");
+  
+        Array.from(ul.getElementsByTagName("LI"))
+          .sort((a, b) => a.textContent.localeCompare(b.textContent))
+          .forEach(li => ul.appendChild(li));
+    } else {
+      console.log("Passed")
+    }
+  });
 
 
 
