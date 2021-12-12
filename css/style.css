@@ -1,4 +1,5 @@
 body {
+    background-image: url("../img/music-player-bg.jpg");
     margin: 3em;
     height: 90vh ;
     display: flex ;
@@ -17,9 +18,9 @@ body {
     width: 70%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    border: 2px solid;
     border-radius: 7em;
-    /* box-shadow: -.2em .2em gray; */
+    filter: drop-shadow(2em 2em 5em blueviolet);
+    
 }
 
 img {
@@ -52,6 +53,7 @@ img {
     justify-content: center;
     border: 2px solid;
     border-radius: 3em;
+    
 }
 
 .controls {
