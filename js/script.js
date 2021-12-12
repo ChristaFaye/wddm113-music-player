@@ -95,16 +95,18 @@ let songList = [
 
     
 let list = document.getElementById("list");
-
+var i =0;
 songList.forEach((item)=>{
+    i++;
     let li = document.createElement("li");
+    li.id = `song${i}`;
     li.innerHTML = `
-    <img src="${item.src} id="imgList"/>
-    <span>
-        <h2>${item.title}</h2>
-        <h3>${item.album} by ${item.artist}</h3>
-        <p>${item.rating}
-    </span>
+        <img src="${item.src} id="imgList"/>
+        <span>
+            <h2>${item.title}</h2>
+            <h3>${item.album} by ${item.artist}</h3>
+            <p>${item.rating}
+        </span>
     `;
     //li.setAttribute(src, item.src);
     
