@@ -75,6 +75,10 @@ ul {
 
 li {
     border-bottom: .5px solid beige;
+    display: flex;
+    align-items:center;
+    padding-top: 1em;
+    padding-bottom: 1em;
 }
 
 .playlist ul {
@@ -89,13 +93,12 @@ li {
 }
 
 .imgList {
-    display: inline-block;
-    padding-top: 1em;
+    vertical-align: middle;
 }
 
 span {
     display: inline-block;
-    padding: 2em;
+    padding-left: 1em;
 }
 
 h2, h3, p {
