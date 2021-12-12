@@ -9,7 +9,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
-            duration: "3:00";
+            duration: "3:00"
         },
         { //song2
             title: "title1", 
@@ -19,6 +19,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
+            duration: "3:00"
         },
         { //song3
             title: "title1", 
@@ -28,6 +29,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
+            duration: "3:00"
         },
         { //song4
             title: "title1", 
@@ -37,6 +39,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
+            duration: "3:00"
         },
         { //song5
             title: "title1", 
@@ -46,6 +49,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
+            duration: "3:00"
         },
         { //song6
             title: "title1", 
@@ -55,6 +59,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
+            duration: "3:00"
         },
         { //song7
             title: "title1", 
@@ -64,6 +69,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
+            duration: "3:00"
         },
         { //song8
             title: "title1", 
@@ -73,6 +79,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
+            duration: "3:00"
         },
         { //song9
             title: "title1", 
@@ -82,6 +89,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
+            duration: "3:00"
         },
         { //song10
             title: "title1", 
@@ -91,6 +99,7 @@ let songList = [
             songCover: "img1",
             desc: "lorem ipsum",
             rating: "5.0",
+            duration: "3:00"
         }    
     ];
 
@@ -107,6 +116,8 @@ songList.forEach((item)=>{
             <h2>${item.title}</h2>
             <h3>${item.album} by ${item.artist}</h3>
         </span>
+        <p>${item.duration}</p>
+        
     `;
     list.appendChild(li);
   })
