@@ -42,6 +42,10 @@ img {
     display: grid;
 }
 
+#blurbg {
+    filter: blur(1em);
+}
+
 .imgPlaying {
     width: 20em;
     height: 20em;
