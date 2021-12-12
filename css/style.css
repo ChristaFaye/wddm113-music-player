@@ -89,9 +89,10 @@ li {
     text-align: center;
 }
 .playlist ul {
-    max-height: 35em;
+    max-height: 30em;
     width: 85%;
     overflow: auto;
+    margin-top: 2em;
 }
 
 .playlist ul::-webkit-scrollbar { 
