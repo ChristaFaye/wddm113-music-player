@@ -105,7 +105,6 @@ songList.forEach((item)=>{
         <span>
             <h2>${item.title}</h2>
             <h3>${item.album} by ${item.artist}</h3>
-            <p>${item.rating}
         </span>
     `;
     //li.setAttribute(src, item.src);
