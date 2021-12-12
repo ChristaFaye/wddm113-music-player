@@ -6,7 +6,7 @@ let songList = [
             artist: "artist1",
             album: "album1",
             src: "mp3", 
-            songCover: "img1",
+            songCover: "../img/song-cover.jpg",
             desc: "lorem ipsum",
             rating: "5.0",
             duration: "3:00"
@@ -111,7 +111,7 @@ songList.forEach((item)=>{
     let li = document.createElement("li");
     li.id = `song${i}`;
     li.innerHTML = `
-        <img src="${item.src} id="imgList"/>
+        <img src=${item.songCover} id="imgList"/>
         <span>
             <h2>${item.title}</h2>
             <h3>${item.album} by ${item.artist}</h3>
