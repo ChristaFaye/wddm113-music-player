@@ -95,8 +95,11 @@ li {
     display: none; 
 }
 
-.imgList {
+.imglist {
     vertical-align: middle;
+    border: 2px solid;
+    border-radius: 2em;
+
 }
 
 span {
