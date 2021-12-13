@@ -1,7 +1,7 @@
 const songList = [
         {  //song1
             title: "Love Myself", 
-            artist: "artist1",
+            artist: "BTS",
             album: "album1",
             src: "../songs/BTS_Answer_Love_Myself.mp3", 
             songCover: "../img/song-cover.jpg",
@@ -14,87 +14,87 @@ const songList = [
             artist: "artist2",
             album: "album2",
             src: "../songs/BTS_Best_Of_Me.mp3", 
-            songCover: "img1",
+            songCover: "../img/song-cover.jpg",
             desc: "lorem ipsum",
             rating: "5.0",
             duration: "3:00"
         },
         { //song3
             title: "Butter", 
-            artist: "artist1",
+            artist: "BTS",
             album: "album1",
             src: "../songs/BTS_Butter.mp3", 
-            songCover: "img1",
+            songCover: "../img/song-cover.jpg",
             desc: "lorem ipsum",
             rating: "5.0",
             duration: "3:00"
         },
         { //song4
             title: "Young Forever", 
-            artist: "artist1",
+            artist: "BTS",
             album: "album1",
             src: "../songs/BTS_Epilogue_Young_Forever.mp3", 
-            songCover: "img1",
+            songCover: "../img/song-cover.jpg",
             desc: "lorem ipsum",
             rating: "5.0",
             duration: "3:00"
         },
         { //song5
             title: "I'm Fine", 
-            artist: "artist1",
+            artist: "BTS",
             album: "album1",
             src: "../songs/BTS_I_m_Fine.mp3", 
-            songCover: "img1",
+            songCover: "../img/song-cover.jpg",
             desc: "lorem ipsum",
             rating: "5.0",
             duration: "3:00"
         },
         { //song6
             title: "Magic Shop", 
-            artist: "artist1",
+            artist: "BTS",
             album: "album1",
             src: "../songs/BTS_Magic_Shop.mp3", 
-            songCover: "img1",
+            songCover: "../img/song-cover.jpg",
             desc: "lorem ipsum",
             rating: "5.0",
             duration: "3:00"
         },
         { //song7
             title: "MIC Drop", 
-            artist: "artist1",
+            artist: "BTS",
             album: "album1",
             src: "../songs/BTS_MIC_Drop.mp3", 
-            songCover: "img1",
+            songCover: "../img/song-cover.jpg",
             desc: "lorem ipsum",
             rating: "5.0",
             duration: "3:00"
         },
         { //song8
             title: "Permission to Dance", 
-            artist: "artist1",
+            artist: "BTS",
             album: "album1",
             src: "../songs/BTS_Permission_to_Dance.mp3", 
-            songCover: "img1",
+            songCover: "../img/song-cover.jpg",
             desc: "lorem ipsum",
             rating: "5.0",
             duration: "3:00"
         },
         { //song9
             title: "UGH", 
-            artist: "artist1",
+            artist: "BTS",
             album: "album1",
             src: "../songs/BTS_UGH.mp3", 
-            songCover: "img1",
+            songCover: "../img/song-cover.jpg",
             desc: "lorem ipsum",
             rating: "5.0",
             duration: "3:00"
         },
         { //song10
             title: "Dionysus", 
-            artist: "artist1",
+            artist: "BTS",
             album: "album1",
             src: "../songs/BTS_Dionysus.mp3", 
-            songCover: "img1",
+            songCover: "../img/song-cover.jpg",
             desc: "lorem ipsum",
             rating: "5.0",
             duration: "3:00"
@@ -127,7 +127,7 @@ window.addEventListener('DOMContentLoaded', function() {
     var playSrc = `../img/playBtn.png`;
     document.getElementById("songTitle").innerHTML = firstSong.title;
     document.getElementById("artistPlaying").innerHTML = firstSong.artist;
-    document.getElementById("albumPlaying").innerHTML = firstSong.album;
+    // document.getElementById("albumPlaying").innerHTML = firstSong.album;
     document.getElementById("audio").src = firstSong.src;
     document.getElementById("imgPlaying").setAttribute(`src`, firstSong.songCover);;
     document.getElementById("playBtn").setAttribute(`onclick`, `play()`);
@@ -145,7 +145,7 @@ function clicked(clicked_id) {
     document.getElementById("songTitle").innerHTML = song.title;
     document.getElementById("imgPlaying").src = song.songCover;
     document.getElementById("artistPlaying").innerHTML = song.artist;
-    document.getElementById("albumPlaying").innerHTML = song.album;
+    // document.getElementById("albumPlaying").innerHTML = song.album;
     document.getElementById("audio").src = song.src;
     document.getElementById("playBtn").setAttribute(`onclick`, `play()`);
     document.getElementById("playBtn").setAttribute(`src`, playSrc);
@@ -160,11 +160,14 @@ function play() {
     var audio = document.getElementById("audio");
     var btn = document.getElementById("playBtn");
     var pause =  document.getElementById("playBtn");
+    var imgPlaying = document.getElementById("imgPlaying");
    
     btn.src = `../img/pauseBtn.png`;
     pause.setAttribute(`onclick`, `pause()`);
+    imgPlaying.classList.add("imgPlayingAnimate");
+
     audio.play();
-    
+
     audio.ontimeupdate = function() {
         var currentTime = audio.currentTime;
         var minutes = Math.floor(currentTime / 60);
@@ -173,7 +176,8 @@ function play() {
         if (seconds < 10) {seconds = "0"+seconds;}
         var songCurrentTime = minutes + ':' + seconds;
         
-        document.getElementById("demo").innerHTML = songCurrentTime;
+        document.getElementById("elapsedTime").innerHTML = songCurrentTime;
+
     };
 
     var duration = audio.duration;
@@ -183,6 +187,8 @@ function play() {
     if (seconds < 10) {seconds = "0"+seconds;}
     var songDuration = minutes + ':' + seconds;
     console.log(songDuration);
+
+    
     
 }
 
@@ -194,14 +200,16 @@ function pause() {
     play.setAttribute(`onclick`, `play()`);
     audio.pause();
 
+    imgPlaying.classList.remove("imgPlayingAnimate");
+
 }
 
 function filter() {
 
 const element = document.getElementById("filter");
 
-const checkValue = element.options[element.selectedIndex].value;
-const checkText = element.options[element.selectedIndex].text;
+//const checkValue = element.options[element.selectedIndex].value;
+//const checkText = element.options[element.selectedIndex].text;
 
 element.addEventListener("change", (e) => {
   const value = e.target.value;
@@ -223,6 +231,8 @@ function sortAlphabetical() {
       .sort((a, b) => a.textContent.localeCompare(b.textContent))
       .forEach(li => ul.appendChild(li));
 }
+
+
 
 
 
