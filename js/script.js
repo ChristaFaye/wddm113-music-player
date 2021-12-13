@@ -110,8 +110,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
     let list = document.getElementById("list");
     var i = 0;
-    let hAudio = document.getElementById("hiddenAudio");
-    let hDuration = "";
+    
     songList.forEach((item)=>{
 
         
@@ -129,16 +128,15 @@ window.addEventListener('DOMContentLoaded', function() {
             
         `;
         list.appendChild(li);  
-        // hAudio.setAttribute(`src`, item.src);
-
-        // hDuration = hAudio.duration;
-        // console.log(hDuration); 
-        // var minutes = Math.floor(hDuration / 60);
-        // var seconds = Math.floor(hDuration - minutes * 60);
-        // if (minutes < 10) {minutes = "0"+minutes;}
-        // if (seconds < 10) {seconds = "0"+seconds;}
-        // var hiddenDuration = minutes + ':' + seconds;
-        // console.log(hiddenDuration);
+        let hAudio = document.getElementById("hiddenAudio");
+        var hDuration = hAudio.duration;
+        console.log(hDuration); 
+        var minutes = Math.floor(hDuration / 60);
+        var seconds = Math.floor(hDuration - minutes * 60);
+        if (minutes < 10) {minutes = "0"+minutes;}
+        if (seconds < 10) {seconds = "0"+seconds;}
+        var hiddenDuration = minutes + ':' + seconds;
+        console.log(hiddenDuration);
     })
   
    // sortList("list");
@@ -178,6 +176,7 @@ function play() {
     var btn = document.getElementById("playBtn");
     var pause =  document.getElementById("playBtn");
     var imgPlaying = document.getElementById("imgPlaying");
+    
    
     btn.src = `../img/pauseBtn.png`;
     pause.setAttribute(`onclick`, `pause()`);
@@ -187,11 +186,14 @@ function play() {
 
     var duration = audio.duration;
     var minutes = Math.floor(duration / 60);
-    var seconds = Math.floor(duration - minutes * 60);
+    var seconds = Math.floor(duration - (minutes * 60));
+    var currentTime = 0;
+    
     if (minutes < 10) {minutes = "0"+minutes;}
     if (seconds < 10) {seconds = "0"+seconds;}
     var songDuration = minutes + ':' + seconds;
-    var currentTime = audio.currentTime;
+    document.getElementById("durationTime").innerHTML = songDuration;
+
     audio.ontimeupdate = function() {
         var currentTime = audio.currentTime;
         var minutes = Math.floor(currentTime / 60);
@@ -203,9 +205,13 @@ function play() {
         
         document.getElementById("elapsedTime").innerHTML = songCurrentTime;
         elem.style.width = currentTime + "px";
+        move(duration, currentTime);
+        
     };
     
-    move(duration, currentTime);
+    audio.onended = function() {
+        alert("The audio has ended");
+    };
     
 }
 
