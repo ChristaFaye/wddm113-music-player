@@ -103,9 +103,18 @@ const songList = [
 
 window.addEventListener('DOMContentLoaded', function() {
 
-    let list = document.getElementById("list");
-    var i =0;
+    
     songList.forEach((item)=>{
+        
+    })
+
+    let list = document.getElementById("list");
+    var i = 0;
+    let hAudio = document.getElementById("hiddenAudio");
+    let hDuration = "";
+    songList.forEach((item)=>{
+
+        
         i++;
         let li = document.createElement("li");
         li.setAttribute(`id`, `song${i}`);
@@ -115,10 +124,21 @@ window.addEventListener('DOMContentLoaded', function() {
             <span>
                 <h2>${item.title}</h2>
                 <h3>${item.album} by ${item.artist}</h3>
+                <h4>${item.duration}</h4>
             </span>
             
         `;
-        list.appendChild(li);
+        list.appendChild(li);  
+        // hAudio.setAttribute(`src`, item.src);
+
+        // hDuration = hAudio.duration;
+        // console.log(hDuration); 
+        // var minutes = Math.floor(hDuration / 60);
+        // var seconds = Math.floor(hDuration - minutes * 60);
+        // if (minutes < 10) {minutes = "0"+minutes;}
+        // if (seconds < 10) {seconds = "0"+seconds;}
+        // var hiddenDuration = minutes + ':' + seconds;
+        // console.log(hiddenDuration);
     })
   
    // sortList("list");
@@ -149,10 +169,7 @@ function clicked(clicked_id) {
     document.getElementById("audio").src = song.src;
     document.getElementById("playBtn").setAttribute(`onclick`, `play()`);
     document.getElementById("playBtn").setAttribute(`src`, playSrc);
-
-    
-
-    
+  
 }
 
 
@@ -168,27 +185,27 @@ function play() {
 
     audio.play();
 
-    audio.ontimeupdate = function() {
-        var currentTime = audio.currentTime;
-        var minutes = Math.floor(currentTime / 60);
-        var seconds = Math.floor(currentTime - minutes * 60);
-        if (minutes < 10) {minutes = "0"+minutes;}
-        if (seconds < 10) {seconds = "0"+seconds;}
-        var songCurrentTime = minutes + ':' + seconds;
-        
-        document.getElementById("elapsedTime").innerHTML = songCurrentTime;
-
-    };
-
     var duration = audio.duration;
     var minutes = Math.floor(duration / 60);
     var seconds = Math.floor(duration - minutes * 60);
     if (minutes < 10) {minutes = "0"+minutes;}
     if (seconds < 10) {seconds = "0"+seconds;}
     var songDuration = minutes + ':' + seconds;
-    console.log(songDuration);
-
+    var currentTime = audio.currentTime;
+    audio.ontimeupdate = function() {
+        var currentTime = audio.currentTime;
+        var minutes = Math.floor(currentTime / 60);
+        var seconds = Math.floor(currentTime - minutes * 60);
+        var elem = document.getElementById("myBar");
+        if (minutes < 10) {minutes = "0"+minutes;}
+        if (seconds < 10) {seconds = "0"+seconds;}
+        var songCurrentTime = minutes + ':' + seconds;
+        
+        document.getElementById("elapsedTime").innerHTML = songCurrentTime;
+        elem.style.width = currentTime + "px";
+    };
     
+    move(duration, currentTime);
     
 }
 
@@ -232,7 +249,24 @@ function sortAlphabetical() {
       .forEach(li => ul.appendChild(li));
 }
 
-
+var p = 0;
+function move(duration, currentTime) {
+  if (p == 0) {
+    p = 1;
+    
+    var elem2 = document.getElementById("myProgress");
+    //var width = currentTime;
+    var id = setInterval(frame, 1000);
+    elem2.style.width = duration + "px";
+    elem2.style.display = "block";
+    function frame() {
+      if (currentTime >= duration) {
+        clearInterval(id);
+        p = 0;
+      }
+    }
+  }
+}
 
 
 
