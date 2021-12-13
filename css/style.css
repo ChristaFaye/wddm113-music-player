@@ -43,7 +43,7 @@ img {
 
 .playing {
     display: grid;
-    border-right: 2px solid white;
+
 }
 
 #blurbg {
@@ -91,7 +91,7 @@ img {
     align-items: flex-end;
     align-content: center;
     justify-content: center;
-    gap: 2em;
+    gap: 1em;
 }
 
 ul {
@@ -180,22 +180,53 @@ h4 {
 
 #songTitle {
     text-align: center;
-    font-size: 3em;
-    height: 0;
+    font-size: 2.5em;
+    height: 0.2em;
+    color: bisque;
 }
 
 
 #artistPlaying {
     text-align: center;
     font-size: 1.5em;
+    height: 1em;
+    color: white;
 }
 
 #elapsedTime {
     text-align: center;
     font-size: 1em;
+    height: 0;
+}
+
+#filterBy {
+    display: inline-block;
+    position: absolute;
+    right: 10.5em;
+    top: 8.2em;
 }
 
 #filter {
-    display: block;
-    justify-content: right;
+    display: inline-block;
+    position: absolute;
+    background-color: purple;
+    color: white;
+    right: 5em;
+    top: 10em;
+    opacity: .7;
 }
+
+#myProgress {
+    display: none;
+    width: 300px;
+    background-color: gray;
+    height: 0.3em;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+ #myBar {
+    width: 1px;
+    background-color: green;
+    height: 0.3em;
+  }
