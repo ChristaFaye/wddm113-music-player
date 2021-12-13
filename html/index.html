@@ -18,19 +18,26 @@
             <h4 id="artistPlaying">Artist</h4>
             <!-- <h4 id="albumPlaying">From Album</h4> -->
             <h3 id="elapsedTime"></h3>
-            <audio id="audio"></audio>
+            
+            <div id="myProgress">
+                <div id="myBar"></div>
+            </div>
+
+
 
             <div class="controls">
                 <img id="backBtn" src="../img/backBtn.png" />
                 <img id="playBtn" src="../img/playBtn.png"/>
                 <img id="forwardBtn" src="../img/forwardBtn.png"/>
             </div>
+            <audio id="audio"></audio>
+            <audio id="hiddenAudio"></audio>
         </div>
     
         <div class="playlist" id="playlist">
             <h1>Top 10 Chart</h1>
 
-                
+            <h3 id="filterBy">Filter by:</h3>   
             <select name="filter" id="filter" onclick="filter()">
                 <option value="">--select--</option>
                 <option value="alphabetical">Alphabetical</option>
