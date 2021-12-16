@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale = 1.0">
-    <script src="../js/script.js"></script>
+  
     <link rel="stylesheet" href="../css/style.css">
     <title>Music Player</title>
 </head>
@@ -17,21 +17,24 @@
             <h4 id="songTitle">Title</h4>
             <h4 id="artistPlaying">Artist</h4>
             <!-- <h4 id="albumPlaying">From Album</h4> -->
+           
+        <div class="time">
             <h3 id="elapsedTime"></h3>
-            <h3 id="durationTime"></h3>
             <div id="myProgress">
                 <div id="myBar"></div>
             </div>
+            <h3 id="durationTime"></h3>
+        </div>
 
-
-
-            <div class="controls">
+            <div class="controls">   
                 <img id="backBtn" src="../img/backBtn.png" />
                 <img id="playBtn" src="../img/playBtn.png"/>
-                <img id="forwardBtn" src="../img/forwardBtn.png"/>
+                <img id="forwardBtn" src="../img/forwardBtn.png"/>    
             </div>
+            <h1 id="demo">TEST</h1>
+
             <audio id="audio"></audio>
-            <audio id="hiddenAudio"></audio>
+            <audio id="hiddenAudio" src="../songs/BTS_Answer_Love_Myself.mp3"></audio>
         </div>
     
         <div class="playlist" id="playlist">
@@ -53,7 +56,7 @@
         
         
     </div>
-
+    <script src="../js/script.js" defer></script>
     
 </body>
 </html>
