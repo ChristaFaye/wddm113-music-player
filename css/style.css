@@ -1,22 +1,26 @@
+
+
 body {
     /* background-image: url("../img/music-player-bg.jpg"); */
     margin: 3em;
-    height: 90vh ;
-    display: flex ;
+    /* height: 90vh ; */
+    display: block ;
     align-items: center ;
     justify-content: center ;
     background-color: black ;
 
 }
 
+
 .musicPlayer {
     background-image: url("../img/music-player-bg.jpg");
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    height: 80vh;
-    width: 80%;
+    /* height: 80vh;
+    width: 80%; */
     display: grid;
+    
     grid-template-columns: repeat(2, 1fr);
     border-radius: 2em;
     filter: drop-shadow(2em 2em 5em blueviolet);    
@@ -49,10 +53,10 @@ img {
 #imgPlaying {
     width: 20em;
     height: 20em;
-    display: block;
+    /* display: block; */
     margin: auto;
-    position: relative;
-    align-items: flex-start;
+    /* position: relative; */
+    /* align-items: flex-start; */
     align-content: center;
     justify-content: center;
     border: 2px solid;
@@ -84,10 +88,18 @@ img {
 .controls {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-end;
+    /* align-items: flex-start; */
     align-content: center;
     justify-content: center;
     gap: 1em;
+}
+.time {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 1em;
 }
 
 ul {
@@ -100,7 +112,7 @@ ul {
 
 li {
     border-bottom: .5px solid beige;
-    display: flex;
+    /* display: flex; */
     align-items:center;
     padding-top: 1em;
     padding-bottom: 1em;
@@ -114,8 +126,10 @@ li {
 .playlist ul {
     max-height: 30em;
     width: 85%;
+    height: 75%;
     overflow: auto;
-    margin-top: 2em;
+    margin-top: 5em;
+    margin-top: 3em;
 }
 
 .playlist ul::-webkit-scrollbar { 
@@ -192,20 +206,24 @@ h4 {
     text-align: center;
     font-size: 1em;
     height: 0;
-    display: inline-block;
-    position: absolute;
-    bottom: 11.4em;
-    left: 8em;
+    align-content: center;
+    justify-content: center;
+    /* display: inline-block; */
+    /* position: absolute;
+    bottom: 10em;
+    left: 8em; */
 }
 
 #durationTime {
     text-align: center;
     font-size: 1em;
     height: 0;
-    display: inline-block;
-    position: absolute;
-    bottom: 11.4em;
-    left: 30.5em;
+    align-content: center;
+    justify-content: center;
+    /* display: inline-block; */
+    /* position: absolute;
+    bottom: 10em;
+    left: 30.5em; */
 }
 
 #filterBy {
@@ -229,9 +247,13 @@ h4 {
     display: none;
     width: 300px;
     background-color: gray;
-    height: 0.3em;
-    margin-left: auto;
-    margin-right: auto;
+    /* align-content: center;
+    justify-content: center; */
+    /* margin: 1em;
+    bottom: 1em; */
+    margin-top: 1.2em;
+    margin-left: 1.2em;
+    margin-right: 1.2em;
     border-radius: 1em;
 }
   
@@ -240,4 +262,6 @@ h4 {
     background-color: lightgreen;
     height: 0.3em;
     border-radius: 1em;
+    /* align-content: center;
+    justify-content: center; */
   }
