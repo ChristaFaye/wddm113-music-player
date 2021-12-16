@@ -134,10 +134,13 @@ plyBtn.setAttribute(`src`, playSrc);
 function clicked(clicked_id) { 
     var index = clicked_id - 1;
     var song = songList[index];
+    var playSrc = `../img/playBtn.png`;
+
     document.getElementById("songTitle").innerHTML = song.title;
     document.getElementById("imgPlaying").src = song.songCover;
     document.getElementById("artistPlaying").innerHTML = song.artist;
     document.getElementById("audio").src = song.src;
+    document.getElementById("playBtn").src = playSrc;
 }
 
 
@@ -148,9 +151,6 @@ function play() {
     var imgPlaying = document.getElementById("imgPlaying");
     
     
-    //btn.setAttribute(`onclick`, `pause()`);
-    
-
     if (audio.paused) {
         audio.play();
         btn.src = `../img/pauseBtn.png`;
@@ -158,48 +158,43 @@ function play() {
     } else {
         audio.pause();
         btn.src = `../img/playBtn.png`;
+        var audio = document.getElementById("audio");
+        imgPlaying.classList.remove("imgPlayingAnimate");
     }
     
 
     var duration = audio.duration;
-    var minutes = Math.floor(duration / 60);
-    var seconds = Math.floor(duration - (minutes * 60));
-    
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
+    durationTime(duration);
+   
     var songDuration = minutes + ':' + seconds;
     document.getElementById("durationTime").innerHTML = songDuration;
 
     audio.ontimeupdate = function() {
         var currentTime = audio.currentTime;
-        var minutes = Math.floor(currentTime / 60);
-        var seconds = Math.floor(currentTime - minutes * 60);
         var elem = document.getElementById("myBar");
-        if (minutes < 10) {minutes = "0"+minutes;}
-        if (seconds < 10) {seconds = "0"+seconds;}
         var songCurrentTime = minutes + ':' + seconds;
-        
-        document.getElementById("elapsedTime").innerHTML = songCurrentTime;
+        var elapsed =  document.getElementById("elapsedTime");
+
+        durationTime(currentTime);
+        elapsed.innerHTML = songCurrentTime;
         elem.style.width = currentTime + "px";
+
         move(duration, currentTime);
         
     };
+};
     
-    audio.onended = function() {
-        alert("The audio has ended");
-    };
-    
+
+
+function durationTime() {
+    var minutes = Math.floor(duration / 60);
+    var seconds = Math.floor(duration - (minutes * 60));
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
 }
 
 function pause() {
-    var audio = document.getElementById("audio");
-    var btn = document.getElementById("playBtn");
-    var play = document.getElementById("playBtn");
-    btn.src = `../img/playBtn.png`;
-    play.setAttribute(`onclick`, `play()`);
-    audio.pause();
-
-    imgPlaying.classList.remove("imgPlayingAnimate");
+    
 
 }
 
