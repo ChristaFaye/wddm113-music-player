@@ -115,7 +115,6 @@ const songList = [
             <span>
                 <h2>${item.title}</h2>
                 <h3>${item.album} by ${item.artist}</h3>
-                <h4>${item.duration}</h4>
             </span>
             
         `;
