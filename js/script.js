@@ -186,7 +186,7 @@ function play() {
     
 
 
-function durationTime() {
+function durationTime(duration) {
     var minutes = Math.floor(duration / 60);
     var seconds = Math.floor(duration - (minutes * 60));
     if (minutes < 10) {minutes = "0"+minutes;}
