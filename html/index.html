@@ -37,13 +37,8 @@
         </div>
     
         <div class="playlist" id="playlist">
-            <h1>Top 10 Chart</h1>
 
-            <form>
-                <label for="filter">Search:</label>
-                <input type="text" id="filterText" name="filter"/>
-                <button type="button" id="submit">Search</button>
-              </form>
+            
               
             <h3 id="filterBy">Filter by:</h3>   
             <select name="filter" id="filter" onclick="filter()">
@@ -53,7 +48,12 @@
                 <option value="artist">Artist</option>
             </select>
 
-                               
+            <form class="form">
+                <label for="search" id="searchLabel">Search:</label>
+                <input type="text" id="filterText" name="search"/>
+                <button type="button" id="submit">Search</button>
+            </form>
+
             <ul id="list">
             </ul>
             
