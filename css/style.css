@@ -3,11 +3,10 @@
 body {
     /* background-image: url("../img/music-player-bg.jpg"); */
     margin: 3em;
-    /* height: 90vh ; */
-    display: block ;
-    align-items: center ;
-    justify-content: center ;
-    background-color: black ;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
 
 }
 
@@ -17,10 +16,11 @@ body {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: cover;
-    /* height: 80vh;
-    width: 80%; */
+    /* height: 80vh; */
+    /* width: 90%; */
+    min-height: 90%;
     display: grid;
-    
+    padding: 2em;
     grid-template-columns: repeat(2, 1fr);
     border-radius: 2em;
     filter: drop-shadow(2em 2em 5em blueviolet);    
@@ -55,6 +55,7 @@ img {
     height: 20em;
     /* display: block; */
     margin: auto;
+    
     /* position: relative; */
     /* align-items: flex-start; */
     align-content: center;
@@ -248,6 +249,18 @@ h4 {
     opacity: .7;
 }
 
+.form {
+    display: none;
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: stretch;
+}
+
+#searchLabel, #filterText  {
+    margin: .2em;
+}
+
+
 #myProgress {
     display: none;
     width: 300px;
@@ -274,3 +287,17 @@ h4 {
   label {
       color: white;
   }
+
+  #submit {
+    box-shadow: 0px 1px 0px 0px violet;
+	background-color: cyan;
+	border-radius:6px;
+	border: 1px solid black;
+	display: inline-block;
+	color: black;
+	font-family:Arial;
+	font-size:12px;
+	font-weight: lighter;
+	padding: .5em 1em;
+}
+
