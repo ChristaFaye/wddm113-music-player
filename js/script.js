@@ -122,6 +122,7 @@ window.addEventListener(`load`, function() {
         i++;
         let li = document.createElement("li");
         li.setAttribute(`id`, `${i}`);
+        li.setAttribute(`class`, `song`);
         li.addEventListener("click", function() {clicked(this.id)});
         li.innerHTML = `
             <img src=${item.songCover} id="imglist" "/>
@@ -281,8 +282,22 @@ function move(duration, currentTime) {
   }
 }
 
-
-
+var submit = document.getElementById(`submit`);
+submit.addEventListener(`click`, searchSong);
+function searchSong() {
+    var filterText = document.getElementById(`filterText`);
+    //filterText.onkeyup = function () {
+        var filter = filterText.value.toUpperCase();
+        var lis = document.getElementsByTagName('li');
+        for (var i = 0; i < lis.length; i++) {
+            var name = lis[i].getElementsByTagName('h2')[0].innerHTML;
+            if (name.toUpperCase().indexOf(filter) == 0) 
+                lis[i].style.display = 'list-item';
+            else
+                lis[i].style.display = 'none';
+        }
+    //}
+}
 
 
 
