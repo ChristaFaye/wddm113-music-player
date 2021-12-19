@@ -120,7 +120,8 @@ songList.forEach((item)=>{
     
 })
 
-let firstSong = songList[0];
+let playingIndex = 0;
+let firstSong = songList[playingIndex];
 let plyBtn = document.getElementById(`playBtn`);
 var playSrc = `../img/playBtn.png`;
 document.getElementById("songTitle").innerHTML = firstSong.title;
@@ -134,13 +135,17 @@ plyBtn.setAttribute(`src`, playSrc);
 function clicked(clicked_id) { 
     var index = clicked_id - 1;
     var song = songList[index];
-    var playSrc = `../img/playBtn.png`;
+    var pauseSrc = `../img/pauseBtn.png`;
 
     document.getElementById("songTitle").innerHTML = song.title;
     document.getElementById("imgPlaying").src = song.songCover;
     document.getElementById("artistPlaying").innerHTML = song.artist;
     document.getElementById("audio").src = song.src;
-    document.getElementById("playBtn").src = playSrc;
+    document.getElementById("playBtn").src = pauseSrc;
+
+    audio.play();
+
+    
 }
 
 
@@ -193,10 +198,7 @@ function durationTime(duration) {
     if (seconds < 10) {seconds = "0"+seconds;}
 }
 
-function pause() {
-    
 
-}
 
 function filter() {
 
