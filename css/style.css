@@ -249,7 +249,7 @@ h4 {
     opacity: .7;
 }
 
-.form {
+.formField {
     display: none;
     flex-flow: row wrap;
     align-items: flex-start;
