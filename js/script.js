@@ -101,41 +101,53 @@ const songList = [
         }    
 ];
 
-let list = document.getElementById("list");
-var i = 0;
-    
-songList.forEach((item)=>{
-    i++;
-    let li = document.createElement("li");
-    li.setAttribute(`id`, `${i}`);
-    li.addEventListener("click", function() {clicked(this.id)});
-    li.innerHTML = `
-        <img src=${item.songCover} id="imglist" "/>
-        <span>
-            <h2>${item.title}</h2>
-            <h3>${item.album} by ${item.artist}</h3>
-        </span>
-        `;
-    list.appendChild(li);     
-    
+let playingIndex = 0;
+
+window.addEventListener(`load`, function() {
+
+    let firstSong = songList[playingIndex];
+    let plyBtn = document.getElementById(`playBtn`);
+    var playSrc = `../img/playBtn.png`;
+    document.getElementById("songTitle").innerHTML = firstSong.title;
+    document.getElementById("artistPlaying").innerHTML = firstSong.artist;
+    document.getElementById("audio").src = firstSong.src;
+    document.getElementById("imgPlaying").setAttribute(`src`, firstSong.songCover);;
+    plyBtn.addEventListener(`click`, play);
+    plyBtn.setAttribute(`src`, playSrc);
+
+    let list = document.getElementById("list");
+    var i = 0;
+        
+    songList.forEach((item)=>{
+        i++;
+        let li = document.createElement("li");
+        li.setAttribute(`id`, `${i}`);
+        li.addEventListener("click", function() {clicked(this.id)});
+        li.innerHTML = `
+            <img src=${item.songCover} id="imglist" "/>
+            <span>
+                <h2>${item.title}</h2>
+                <h3>${item.album} by ${item.artist}</h3>
+            </span>
+            `;
+        list.appendChild(li);     
+        
+    })
+
 })
 
-let playingIndex = 0;
-let firstSong = songList[playingIndex];
-let plyBtn = document.getElementById(`playBtn`);
-var playSrc = `../img/playBtn.png`;
-document.getElementById("songTitle").innerHTML = firstSong.title;
-document.getElementById("artistPlaying").innerHTML = firstSong.artist;
-document.getElementById("audio").src = firstSong.src;
-document.getElementById("imgPlaying").setAttribute(`src`, firstSong.songCover);;
-plyBtn.addEventListener(`click`, play);
-plyBtn.setAttribute(`src`, playSrc);
-    
+
+
+
 
 function clicked(clicked_id) { 
     var index = clicked_id - 1;
     var song = songList[index];
     var pauseSrc = `../img/pauseBtn.png`;
+    var audio = document.getElementById("audio");
+    var btn = document.getElementById("playBtn");
+    //var pause =  document.getElementById("playBtn");
+    var imgPlaying = document.getElementById("imgPlaying");
 
     document.getElementById("songTitle").innerHTML = song.title;
     document.getElementById("imgPlaying").src = song.songCover;
@@ -143,7 +155,36 @@ function clicked(clicked_id) {
     document.getElementById("audio").src = song.src;
     document.getElementById("playBtn").src = pauseSrc;
 
-    audio.play();
+    if (audio.paused) {
+        audio.play();
+        btn.src = `../img/pauseBtn.png`;
+        imgPlaying.classList.add("imgPlayingAnimate");
+    } else {
+        audio.pause();
+        btn.src = `../img/playBtn.png`;
+        var audio = document.getElementById("audio");
+        imgPlaying.classList.remove("imgPlayingAnimate");
+    }
+
+    var duration = audio.duration;
+    durationTime(duration);
+   
+    var songDuration = minutes + ':' + seconds;
+    document.getElementById("durationTime").innerHTML = songDuration;
+
+    audio.ontimeupdate = function() {
+        var currentTime = audio.currentTime;
+        var elem = document.getElementById("myBar");
+        var songCurrentTime = minutes + ':' + seconds;
+        var elapsed =  document.getElementById("elapsedTime");
+
+        durationTime(currentTime);
+        elapsed.innerHTML = songCurrentTime;
+        elem.style.width = currentTime + "px";
+
+        move(duration, currentTime);
+        
+    };
 
     
 }
