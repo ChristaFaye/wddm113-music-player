@@ -177,16 +177,13 @@ function clicked(clicked_id) {
         var elem = document.getElementById("myBar");
         var songCurrentTime = minutes + ':' + seconds;
         var elapsed =  document.getElementById("elapsedTime");
-
+    
         durationTime(currentTime);
         elapsed.innerHTML = songCurrentTime;
         elem.style.width = currentTime + "px";
-
-        move(duration, currentTime);
-        
-    };
-
     
+        move(duration, currentTime);
+    }
 }
 
 
@@ -218,10 +215,11 @@ function play() {
     audio.ontimeupdate = function() {
         var currentTime = audio.currentTime;
         var elem = document.getElementById("myBar");
-        var songCurrentTime = minutes + ':' + seconds;
+        
         var elapsed =  document.getElementById("elapsedTime");
 
         durationTime(currentTime);
+        var songCurrentTime = minutes + ':' + seconds;
         elapsed.innerHTML = songCurrentTime;
         elem.style.width = currentTime + "px";
 
