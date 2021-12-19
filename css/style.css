@@ -118,6 +118,11 @@ li {
     padding-bottom: 1em;
 }
 
+.song {
+    margin: 0;
+    display: list-item;
+}
+
 .playlist {
     text-align: center;
     margin-top: 4em;
@@ -264,4 +269,8 @@ h4 {
     border-radius: 1em;
     /* align-content: center;
     justify-content: center; */
+  }
+
+  label {
+      color: white;
   }
