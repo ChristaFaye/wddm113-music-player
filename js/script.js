@@ -103,7 +103,7 @@ const songList = [
 
 let playingIndex = 0;
 
-window.addEventListener(`load`, function() {
+
 
     let firstSong = songList[playingIndex];
     let plyBtn = document.getElementById(`playBtn`);
@@ -135,7 +135,6 @@ window.addEventListener(`load`, function() {
         
     })
 
-})
 
 
 
@@ -238,23 +237,27 @@ function durationTime(duration) {
     if (seconds < 10) {seconds = "0"+seconds;}
 }
 
-
-
-function filter() {
-
 const element = document.getElementById("filter");
 element.addEventListener("change", (e) => {
   const value = e.target.value;
 
   if (value === `alphabetical`) {
     sortAlphabetical();
+    formStyle.style.display = "none";
+  } else if (value === `title`) {
+    sortArtist();
   } else {
     console.log(`Passed`);
+    formStyle.style.display = "none";
   }
 });
 
-}
 
+
+function sortArtist() {
+    var formStyle = document.getElementById("formField");
+    formStyle.style.display = "flex";
+}
 
 function sortAlphabetical() {
     var ul = document.getElementById("list");
@@ -287,11 +290,11 @@ submit.addEventListener(`click`, searchSong);
 function searchSong() {
     var filterText = document.getElementById(`filterText`);
     //filterText.onkeyup = function () {
-        var filter = filterText.value.toUpperCase();
+        var searchfilter = filterText.value.toUpperCase();
         var lis = document.getElementsByTagName('li');
         for (var i = 0; i < lis.length; i++) {
             var name = lis[i].getElementsByTagName('h2')[0].innerHTML;
-            if (name.toUpperCase().indexOf(filter) == 0) 
+            if (name.toUpperCase().indexOf(searchfilter) == 0) 
                 lis[i].style.display = 'list-item';
             else
                 lis[i].style.display = 'none';
