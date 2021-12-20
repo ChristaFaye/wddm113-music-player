@@ -142,8 +142,6 @@ songList.forEach((item)=>{
 
 
 
-
-
 function clicked(clicked_id) { 
     var index = clicked_id - 1;
     var song = songList[index];
@@ -172,14 +170,8 @@ function clicked(clicked_id) {
         imgPlaying.classList.remove("imgPlayingAnimate");
     }
 
-    
-    var minutes = Math.floor(duration / 60);
-    var seconds = Math.floor(duration - (minutes * 60));
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-   
-    var songDuration = minutes + ':' + seconds;
-    document.getElementById("durationTime").innerHTML = songDuration;
+    f.totalDuration(duration);
+
 
     audio.ontimeupdate = function() {
         var currentTime = audio.currentTime;
@@ -222,13 +214,7 @@ function play() {
     
 
     var duration = audio.duration;
-    var minutes = Math.floor(duration / 60);
-    var seconds = Math.floor(duration - (minutes * 60));
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-   
-    var songDuration = minutes + ':' + seconds;
-    document.getElementById("durationTime").innerHTML = songDuration;
+    f.totalDuration(duration);
 
     audio.ontimeupdate = function() {
         var currentTime = audio.currentTime;
@@ -266,8 +252,6 @@ function forward() {
 
     var songIndex = songList[nextIndex];
     var pauseSrc = `../img/pauseBtn.png`;
-
-    console.log(nextIndex);
     audio.setAttribute(`value`, `${nextIndex}`);
 
     document.getElementById("songTitle").innerHTML = songIndex.title;
@@ -276,22 +260,13 @@ function forward() {
     document.getElementById("audio").src = songIndex.src;
     document.getElementById("playBtn").src = pauseSrc;
 
-    
-    totalDuration();
+    f.totalDuration(duration);
 
     audio.play();
  
 }
 
-function totalDuration() {
-    var minutes = Math.floor(duration / 60);
-    var seconds = Math.floor(duration - (minutes * 60));
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-   
-    var songDuration = minutes + ':' + seconds;
-    document.getElementById("durationTime").innerHTML = songDuration;
-}
+
 
 var backBtn = document.getElementById(`backBtn`);
 backBtn.addEventListener("click", prev);
@@ -310,7 +285,6 @@ function prev() {
     var songIndex = songList[nextIndex];
     var pauseSrc = `../img/pauseBtn.png`;
 
-    console.log(nextIndex);
     audio.setAttribute(`value`, `${nextIndex}`);
 
     document.getElementById("songTitle").innerHTML = songIndex.title;
@@ -320,6 +294,13 @@ function prev() {
     document.getElementById("playBtn").src = pauseSrc;
 
     
+    f.totalDuration(duration);
+
+    audio.play();
+ 
+}
+
+function totalDuration(duration) {
     var minutes = Math.floor(duration / 60);
     var seconds = Math.floor(duration - (minutes * 60));
     if (minutes < 10) {minutes = "0"+minutes;}
@@ -327,9 +308,6 @@ function prev() {
    
     var songDuration = minutes + ':' + seconds;
     document.getElementById("durationTime").innerHTML = songDuration;
-
-    audio.play();
- 
 }
 
 const element = document.getElementById("filter");
