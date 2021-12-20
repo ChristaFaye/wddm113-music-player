@@ -233,13 +233,11 @@ h4 {
 }
 
 #filterBy {
-    display: inline-block;
-    position: absolute;
-    right: 10.5em;
-    top: 8.2em;
+    color: white;
+    margin-right: .5em;
 }
 
-#filter {
+/* #filter {
     display: inline-block;
     position: absolute;
     background-color: purple;
@@ -247,12 +245,19 @@ h4 {
     right: 5em;
     top: 10em;
     opacity: .7;
+} */
+
+.filterDropdown {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: stretch;
+    margin-left: 1em;
 }
 
 .formField {
     display: none;
     flex-flow: row wrap;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: stretch;
 }
 
