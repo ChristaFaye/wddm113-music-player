@@ -245,7 +245,7 @@ element.addEventListener("change", (e) => {
     sortAlphabetical();
     formStyle.style.display = "none";
   } else if (value === `title`) {
-    sortArtist();
+    sortTitle();
   } else {
     console.log(`Passed`);
     formStyle.style.display = "none";
@@ -254,14 +254,16 @@ element.addEventListener("change", (e) => {
 
 
 
-function sortArtist() {
+function sortTitle() {
     var formStyle = document.getElementById("formField");
-    formStyle.style.display = "flex";
+    formStyle.style.display = "inline-block";
 }
 
 function sortAlphabetical() {
     var ul = document.getElementById("list");
-  
+    var formStyle = document.getElementById("formField");
+    formStyle.style.display = "none";
+
     Array.from(ul.getElementsByTagName("li"))
       .sort((a, b) => a.textContent.localeCompare(b.textContent))
       .forEach(li => ul.appendChild(li));
@@ -301,6 +303,11 @@ function searchSong() {
         }
     //}
 }
+
+
+
+
+
 
 
 
