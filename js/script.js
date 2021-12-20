@@ -170,7 +170,7 @@ function clicked(clicked_id) {
         imgPlaying.classList.remove("imgPlayingAnimate");
     }
 
-    f.totalDuration(duration);
+    totalDuration(duration);
 
 
     audio.ontimeupdate = function() {
@@ -214,7 +214,7 @@ function play() {
     
 
     var duration = audio.duration;
-    f.totalDuration(duration);
+    totalDuration(duration);
 
     audio.ontimeupdate = function() {
         var currentTime = audio.currentTime;
@@ -260,7 +260,7 @@ function forward() {
     document.getElementById("audio").src = songIndex.src;
     document.getElementById("playBtn").src = pauseSrc;
 
-    f.totalDuration(duration);
+    totalDuration(duration);
 
     audio.play();
  
@@ -294,7 +294,7 @@ function prev() {
     document.getElementById("playBtn").src = pauseSrc;
 
     
-    f.totalDuration(duration);
+    totalDuration(duration);
 
     audio.play();
  
