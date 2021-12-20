@@ -129,7 +129,7 @@ var playingIndex;
             <img src=${item.songCover} id="imglist" "/>
             <span>
                 <h2>${item.title}</h2>
-                <h3>${item.album} by ${item.artist}</h3>
+                <h3>${item.artist}</h3>
             </span>
             `;
         list.appendChild(li);     
@@ -147,6 +147,7 @@ function clicked(clicked_id) {
     playingIndex = clicked_id;
     var pauseSrc = `../img/pauseBtn.png`;
     var audio = document.getElementById("audio");
+    var duration = audio.duration;
     var btn = document.getElementById("playBtn");
     //var pause =  document.getElementById("playBtn");
     var imgPlaying = document.getElementById("imgPlaying");
@@ -168,7 +169,7 @@ function clicked(clicked_id) {
         imgPlaying.classList.remove("imgPlayingAnimate");
     }
 
-    var duration = audio.duration;
+    
     var minutes = Math.floor(duration / 60);
     var seconds = Math.floor(duration - (minutes * 60));
     if (minutes < 10) {minutes = "0"+minutes;}
@@ -180,17 +181,20 @@ function clicked(clicked_id) {
     audio.ontimeupdate = function() {
         var currentTime = audio.currentTime;
         var elem = document.getElementById("myBar");
-        var songCurrentTime = minutes + ':' + seconds;
+        
         var elapsed =  document.getElementById("elapsedTime");
-    
-        durationTime(currentTime);
+
+        var minutes = Math.floor(currentTime / 60);
+        var seconds = Math.floor(currentTime - (minutes * 60));
+        if (minutes < 10) {minutes = "0"+minutes;}
+        if (seconds < 10) {seconds = "0"+seconds;}
+        var songCurrentTime = minutes + ':' + seconds;
         elapsed.innerHTML = songCurrentTime;
         elem.style.width = currentTime + "px";
-    
-        move(duration, currentTime);
-    }
 
-    return playingIndex;
+        move(duration, currentTime);
+        
+    };
 }
 
 
@@ -228,10 +232,10 @@ function play() {
         
         var elapsed =  document.getElementById("elapsedTime");
 
-        var minutes = Math.floor(duration / 60);
-    var seconds = Math.floor(duration - (minutes * 60));
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
+        var minutes = Math.floor(currentTime / 60);
+        var seconds = Math.floor(currentTime - (minutes * 60));
+        if (minutes < 10) {minutes = "0"+minutes;}
+        if (seconds < 10) {seconds = "0"+seconds;}
         var songCurrentTime = minutes + ':' + seconds;
         elapsed.innerHTML = songCurrentTime;
         elem.style.width = currentTime + "px";
