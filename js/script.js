@@ -251,15 +251,60 @@ function play() {
 var forwardBtn = document.getElementById(`forwardBtn`);
 forwardBtn.addEventListener("click", forward);
     
-function forward(playingIndex) {
-    console.log(playingIndex);
+function forward() {
     var audio = document.getElementById("audio");
-    var playIndex = playingIndex;
-    console.log(playIndex);
+    var playingIndex = parseInt(audio.getAttribute(`value`));
+    //let nextIndex;
+    if (playingIndex == songList.length - 1) {
+        var nextIndex = 0;
+    } else {
+        var nextIndex = playingIndex + 1;
+    }
+
+    var songIndex = songList[nextIndex];
+    var pauseSrc = `../img/pauseBtn.png`;
+
+    console.log(nextIndex);
+    audio.setAttribute(`value`, `${nextIndex}`);
+
+    document.getElementById("songTitle").innerHTML = songIndex.title;
+    document.getElementById("imgPlaying").src = songIndex.songCover;
+    document.getElementById("artistPlaying").innerHTML = songIndex.artist;
+    document.getElementById("audio").src = songIndex.src;
+    document.getElementById("playBtn").src = pauseSrc;
+
     audio.play();
  
 }
 
+var backBtn = document.getElementById(`backBtn`);
+backBtn.addEventListener("click", prev);
+
+function prev() {
+    var audio = document.getElementById("audio");
+    var playingIndex = parseInt(audio.getAttribute(`value`));
+    //let nextIndex;
+    if (playingIndex !== 0) {
+        var nextIndex = playingIndex - 1;
+    } else {
+        var nextIndex = 9;
+    }
+
+    var songIndex = songList[nextIndex];
+    var pauseSrc = `../img/pauseBtn.png`;
+
+    console.log(nextIndex);
+    audio.setAttribute(`value`, `${nextIndex}`);
+
+    document.getElementById("songTitle").innerHTML = songIndex.title;
+    document.getElementById("imgPlaying").src = songIndex.songCover;
+    document.getElementById("artistPlaying").innerHTML = songIndex.artist;
+    document.getElementById("audio").src = songIndex.src;
+    document.getElementById("playBtn").src = pauseSrc;
+
+    audio.play();
+ 
+}
 
 const element = document.getElementById("filter");
 element.addEventListener("change", (e) => {
@@ -306,11 +351,7 @@ function sortAlphabetical() {
          
         
     })
-    //   var lis = document.getElementsByTagName('li');
-    //     for (var i = 0; i < lis.length; i++) {
-    //         lis[i].style.display = 'list-item';
-    //         lis[i].setAttribute(`id`, i);
-    //     }
+
 }
 
 var p = 0;
@@ -340,10 +381,23 @@ function searchSong() {
         var lis = document.getElementsByTagName('li');
         for (var i = 0; i < lis.length; i++) {
             var name = lis[i].getElementsByTagName('h2')[0].innerHTML;
-            if (name.toUpperCase().indexOf(searchfilter) == 0) 
-                lis[i].style.display = 'list-item';
-            else
+            if (name.toUpperCase().indexOf(searchfilter) == 0) {
+                lis[i].style.display = 'list-item'; 
+                lis[i].setAttribute(`id`, `${i}`);
+                lis[i].setAttribute(`class`, `song`);
+                lis[i].setAttribute(`value`, `${i}`);
+                lis[i].addEventListener("click", function() {clicked(this.id)});
+                lis[i].innerHTML = `
+                    <img src=${item.songCover} id="imglist" "/>
+                    <span>
+                        <h2>${item.title}</h2>
+                        <h3>${item.artist}</h3>
+                    </span>
+                    `;
+                }
+            else {
                 lis[i].style.display = 'none';
+            }
         }
     //}
 }
