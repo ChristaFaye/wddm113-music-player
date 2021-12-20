@@ -1,5 +1,5 @@
-AUDIO PLAYER INTERFACE
-by: Christa Faye Reyes
+# AUDIO PLAYER INTERFACE
+## by: Christa Faye Reyes
 
 As final requirement for WDDM 113/114 and WDDM 115.
 
