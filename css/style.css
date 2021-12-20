@@ -233,6 +233,7 @@ h4 {
 }
 
 #filterBy {
+    display: inline-block;
     color: white;
     margin-right: .5em;
 }
@@ -248,7 +249,7 @@ h4 {
 } */
 
 .filterDropdown {
-    display: flex;
+    display: inline-block;
     flex-flow: wrap;
     justify-content: stretch;
     margin-left: 1em;
@@ -259,6 +260,7 @@ h4 {
     flex-flow: row wrap;
     align-items: flex-end;
     justify-content: stretch;
+
 }
 
 #searchLabel, #filterText  {
