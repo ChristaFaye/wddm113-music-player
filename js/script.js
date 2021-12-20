@@ -1,3 +1,5 @@
+
+
 const songList = [
         {  //song1
             title: "Love Is My Road", 
@@ -253,6 +255,7 @@ forwardBtn.addEventListener("click", forward);
     
 function forward() {
     var audio = document.getElementById("audio");
+    var duration = audio.duration;
     var playingIndex = parseInt(audio.getAttribute(`value`));
     //let nextIndex;
     if (playingIndex == songList.length - 1) {
@@ -273,6 +276,15 @@ function forward() {
     document.getElementById("audio").src = songIndex.src;
     document.getElementById("playBtn").src = pauseSrc;
 
+    
+    var minutes = Math.floor(duration / 60);
+    var seconds = Math.floor(duration - (minutes * 60));
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+   
+    var songDuration = minutes + ':' + seconds;
+    document.getElementById("durationTime").innerHTML = songDuration;
+
     audio.play();
  
 }
@@ -282,6 +294,7 @@ backBtn.addEventListener("click", prev);
 
 function prev() {
     var audio = document.getElementById("audio");
+    var duration = audio.duration;
     var playingIndex = parseInt(audio.getAttribute(`value`));
     //let nextIndex;
     if (playingIndex !== 0) {
@@ -301,6 +314,15 @@ function prev() {
     document.getElementById("artistPlaying").innerHTML = songIndex.artist;
     document.getElementById("audio").src = songIndex.src;
     document.getElementById("playBtn").src = pauseSrc;
+
+    
+    var minutes = Math.floor(duration / 60);
+    var seconds = Math.floor(duration - (minutes * 60));
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+   
+    var songDuration = minutes + ':' + seconds;
+    document.getElementById("durationTime").innerHTML = songDuration;
 
     audio.play();
  
