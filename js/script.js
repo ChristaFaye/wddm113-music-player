@@ -244,6 +244,7 @@ element.addEventListener("change", (e) => {
   if (value === `alphabetical`) {
     sortAlphabetical();
     formStyle.style.display = "none";
+    location.reload();
   } else if (value === `title`) {
     sortTitle();
   } else {
@@ -263,6 +264,11 @@ function sortAlphabetical() {
     var ul = document.getElementById("list");
     var formStyle = document.getElementById("formField");
     formStyle.style.display = "none";
+
+    var lis = document.getElementsByTagName('li');
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].style.display = 'list-item';
+        }
 
     Array.from(ul.getElementsByTagName("li"))
       .sort((a, b) => a.textContent.localeCompare(b.textContent))
