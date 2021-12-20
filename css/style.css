@@ -126,7 +126,7 @@ li {
 
 .playlist {
     text-align: center;
-    margin-top: 4em;
+    margin-top: 2em;
     margin-left: 4em;
 }
 .playlist ul {
@@ -134,7 +134,7 @@ li {
     width: 85%;
     height: 75%;
     overflow: auto;
-    margin-top: 5em;
+    margin-top: 2em;
     margin-top: 3em;
 }
 
