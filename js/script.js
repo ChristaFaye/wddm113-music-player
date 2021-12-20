@@ -381,24 +381,12 @@ function searchSong() {
         var lis = document.getElementsByTagName('li');
         for (var i = 0; i < lis.length; i++) {
             var name = lis[i].getElementsByTagName('h2')[0].innerHTML;
-            if (name.toUpperCase().indexOf(searchfilter) == 0) {
-                lis[i].style.display = 'list-item'; 
-                lis[i].setAttribute(`id`, `${i}`);
-                lis[i].setAttribute(`class`, `song`);
-                lis[i].setAttribute(`value`, `${i}`);
-                lis[i].addEventListener("click", function() {clicked(this.id)});
-                lis[i].innerHTML = `
-                    <img src=${item.songCover} id="imglist" "/>
-                    <span>
-                        <h2>${item.title}</h2>
-                        <h3>${item.artist}</h3>
-                    </span>
-                    `;
-                }
-            else {
+            if (name.toUpperCase().indexOf(searchfilter) == 0) 
+                lis[i].style.display = 'list-item';                 
+            else 
                 lis[i].style.display = 'none';
             }
-        }
+        
     //}
 }
 
