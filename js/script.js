@@ -101,40 +101,41 @@ const songList = [
         }    
 ];
 
-var playingIndex;
+
+let firstSong = songList[0];
+let plyBtn = document.getElementById(`playBtn`);
+let index = 0;
+var playSrc = `../img/playBtn.png`;
 
 
+document.getElementById("songTitle").innerHTML = firstSong.title;
+document.getElementById("artistPlaying").innerHTML = firstSong.artist;
+document.getElementById("audio").src = firstSong.src;
+document.getElementById("imgPlaying").setAttribute(`src`, firstSong.songCover);;
+plyBtn.addEventListener("click", play);
+plyBtn.setAttribute("src", playSrc);
+var audio = document.getElementById("audio");
+audio.setAttribute(`value`, `${index}`);
 
-    let firstSong = songList[0];
-    let plyBtn = document.getElementById(`playBtn`);
-    var playSrc = `../img/playBtn.png`;
-    document.getElementById("songTitle").innerHTML = firstSong.title;
-    document.getElementById("artistPlaying").innerHTML = firstSong.artist;
-    document.getElementById("audio").src = firstSong.src;
-    document.getElementById("imgPlaying").setAttribute(`src`, firstSong.songCover);;
-    plyBtn.addEventListener("click", play);
-    plyBtn.setAttribute("src", playSrc);
-
-    let list = document.getElementById("list");
-    var i = 0;
+let list = document.getElementById("list");
+var i = 0;
         
-    songList.forEach((item)=>{
-        i++;
-        let li = document.createElement("li");
-        li.setAttribute(`id`, `${i}`);
-        li.setAttribute(`class`, `song`);
-        li.setAttribute(`value`, `${i}`);
-        li.addEventListener("click", function() {clicked(this.id)});
-        li.innerHTML = `
-            <img src=${item.songCover} id="imglist" "/>
-            <span>
-                <h2>${item.title}</h2>
-                <h3>${item.artist}</h3>
-            </span>
-            `;
-        list.appendChild(li);     
-        
-    })
+songList.forEach((item)=>{
+    i++;
+    let li = document.createElement("li");
+    li.setAttribute(`id`, `${i}`);
+    li.setAttribute(`class`, `song`);
+    li.setAttribute(`value`, `${i}`);
+    li.addEventListener("click", function() {clicked(this.id)});
+    li.innerHTML = `
+        <img src=${item.songCover} id="imglist" "/>
+        <span>
+            <h2>${item.title}</h2>
+            <h3>${item.artist}</h3>
+        </span>
+        `;
+    list.appendChild(li);     
+})
 
 
 
@@ -144,13 +145,13 @@ var playingIndex;
 function clicked(clicked_id) { 
     var index = clicked_id - 1;
     var song = songList[index];
-    playingIndex = clicked_id;
     var pauseSrc = `../img/pauseBtn.png`;
     var audio = document.getElementById("audio");
     var duration = audio.duration;
     var btn = document.getElementById("playBtn");
-    //var pause =  document.getElementById("playBtn");
     var imgPlaying = document.getElementById("imgPlaying");
+
+    audio.setAttribute(`value`, `${index}`);
 
     document.getElementById("songTitle").innerHTML = song.title;
     document.getElementById("imgPlaying").src = song.songCover;
@@ -201,8 +202,9 @@ function clicked(clicked_id) {
 function play() {
     var audio = document.getElementById("audio");
     var btn = document.getElementById("playBtn");
-    //var pause =  document.getElementById("playBtn");
     var imgPlaying = document.getElementById("imgPlaying");
+    // audio.setAttribute(`value`, ``)
+  
     
     
     if (audio.paused) {
@@ -250,7 +252,7 @@ var forwardBtn = document.getElementById(`forwardBtn`);
 forwardBtn.addEventListener("click", forward);
     
 function forward(playingIndex) {
-    //var imgPlaying = document.getElementById("imgPlaying");
+    console.log(playingIndex);
     var audio = document.getElementById("audio");
     var playIndex = playingIndex;
     console.log(playIndex);
