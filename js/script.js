@@ -277,6 +277,13 @@ function forward() {
     document.getElementById("playBtn").src = pauseSrc;
 
     
+    totalDuration();
+
+    audio.play();
+ 
+}
+
+function totalDuration() {
     var minutes = Math.floor(duration / 60);
     var seconds = Math.floor(duration - (minutes * 60));
     if (minutes < 10) {minutes = "0"+minutes;}
@@ -284,9 +291,6 @@ function forward() {
    
     var songDuration = minutes + ':' + seconds;
     document.getElementById("durationTime").innerHTML = songDuration;
-
-    audio.play();
- 
 }
 
 var backBtn = document.getElementById(`backBtn`);
